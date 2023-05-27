@@ -40,15 +40,23 @@ function WordSearch() {
             {details!=null?details[0].meanings[0] && <li className='list-item'>Meaning: {details != null ? details[0].meanings[0].definitions[0].definition : ""}
              <span className="mx-2 my-2 badge rounded-pill bg-primary">
              {details[0].meanings[0].partOfSpeech}
-    <span className="visually-hidden">unread messages</span>
+    <span className="visually-hidden">hidden</span>
   </span> </li>:""}
             {details!=null?details[0].meanings[0].definitions[1] && <li className='list-item'>Meaning II: {details != null ? details[0].meanings[0].definitions[1].definition : ""} <span className="mx-2 my-2 badge rounded-pill bg-primary">
              {details[0].meanings[0].partOfSpeech}
-    <span className="visually-hidden">unread messages</span>
+    <span className="visually-hidden">hidden</span>
+  </span></li>:""}
+            {details!=null?details[0].meanings[1] && <li className='list-item'>Meaning III: {details != null ? details[0].meanings[1].definitions[0].definition : ""} <span className="mx-2 my-2 badge rounded-pill bg-primary">
+             {details[0].meanings[1].partOfSpeech}
+    <span className="visually-hidden">hidden</span>
+  </span></li>:""}
+            {details!=null?details[0].meanings[1].definitions[1] && <li className='list-item'>Meaning III: {details != null ? details[0].meanings[1].definitions[1].definition : ""} <span className="mx-2 my-2 badge rounded-pill bg-primary">
+             {details[0].meanings[1].partOfSpeech}
+    <span className="visually-hidden">hidden</span>
   </span></li>:""}
             <li className='list-item'>Phonetics: {details!=null?details[0].phonetic:"Enter any word above"}</li>
-            {details!=null? details[0].phonetics[0] && <li className='list-item'>Pronounciation: <a href={details != null ? details[0].phonetics[0].audio : ""}>{details != null ? "Link" : ""}</a></li>:""}
-            {details!=null?details[0].phonetics[1] && <li className='list-item'>Pronounciation: <a href={details != null ? details[0].phonetics[1].audio : ""}>{details != null ? "Link" : ""}</a></li>:""}
+            {details!=null? details[0].phonetics[0] && <li className='list-item'>Pronounciation: <a href={details != null ? details[0].phonetics[0].audio : ""}>{details != null ? <em style= {{fontSize: '24px'}}>&#xf025;</em> : ""}</a></li>:""}
+            {details!=null?details[0].phonetics[1] && <li className='list-item'>Pronounciation: <a href={details != null ? details[0].phonetics[1].audio : ""}>{details != null ? <em style= {{fontSize: '24px'}}>&#xf025;</em> : ""}</a></li>:""}
         </ul>
     </div>
   </div>
