@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import Result from "./Result";
 
 export default function Form(props){
+    document.title = "Textify - Home"
     const handleClear = () =>{
         setText("")
         props.showAlert("Success", "Text Cleared")
@@ -23,7 +24,7 @@ export default function Form(props){
     const [text, setText] = useState("")
     return(
         <>
-        <div className="container my-4">
+        <div className="container my-4 shadow-lg">
         <div className="mb-3">
            <h3>{props.heading}</h3>
             <textarea className="form-control" value = {text} onChange={handleChange} id="exampleFormControlTextarea1" rows="8"></textarea>

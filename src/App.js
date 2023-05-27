@@ -1,61 +1,63 @@
-import './App.css';
-import Navbar from './components/Navbar';
-import Form from './components/Form';
-import React, { useState } from 'react'
-import Alert from './components/Alert';
-import { 
-  BrowserRouter  as Router,
-  Routes,
-  Route,
-}from 'react-router-dom';
-import About from './components/About';
-import Footer from './components/Footer';
-
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Form from "./components/Form";
+import React, { useState } from "react";
+import Alert from "./components/Alert";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import About from "./components/About";
+import Footer from "./components/Footer";
+import Generate from "./components/Generate";
 
 function App() {
-  const [mode, setMode] = useState('light')
-  const [btnText, setBtnText] = useState('Enable Dark Mode')
-  const [alert, setAlert] = useState(null)
+  const apiKey = process.env.REACT_APP_GOOGLE_TRANSLATE_API
 
-  const showAlert = (type, message) =>{
-      setAlert({
-        msg: message,
-        type: type
-      })
-      setTimeout(() => {  
-        setAlert(null)
-      }, 3000);
-  }
+  const [mode, setMode] = useState("light");
+  const [btnText, setBtnText] = useState("Enable Dark Mode");
+  const [alert, setAlert] = useState(null);
 
-  const toggleMode = () =>{
-    if (mode === 'light'){
-      setMode('dark')
-      setBtnText("Enable Light Mode")
-      document.body.style.backgroundColor = "#41464b"
-      document.body.style.color = 'white'
-      showAlert("Success", "Dark Mode Has Been Enabled")
+  const showAlert = (type, message) => {
+    setAlert({
+      msg: message,
+      type: type,
+    });
+    setTimeout(() => {
+      setAlert(null);
+    }, 3000);
+  };
+
+  const toggleMode = () => {
+    if (mode === "light") {
+      setMode("dark");
+      setBtnText("Enable Light Mode");
+      document.body.style.backgroundColor = "#41464b";
+      document.body.style.color = "white";
+      showAlert("Success", "Dark Mode Has Been Enabled");
+    } else {
+      setMode("light");
+      setBtnText("Enable Dark Mode");
+      document.body.style.backgroundColor = "white";
+      document.body.style.color = "black";
+      showAlert("Success", "Light Mode Has Been Enabled");
     }
-    else{
-      setMode('light')
-      setBtnText("Enable Dark Mode")
-      document.body.style.backgroundColor = "white"
-      document.body.style.color = 'black'
-      showAlert("Success", "Light Mode Has Been Enabled")
-    }
-  }
+  };
   return (
     <Router>
-    <div className="App">
-     <Navbar mode = {mode} toggleMode = {toggleMode} button = {btnText}/>
-     <Alert alert = {alert}/>
-     <Routes>
-      <Route exact path =  "/"  element={<Form heading = "Enter Your Text Here" showAlert = {showAlert}/>}>
-     </Route>
-      <Route exact path =  "/about" element = {<About/>}>
-     </Route>
-     </Routes>
-     <Footer/>
-    </div>
+      <div className="App">
+        <Navbar mode={mode} toggleMode={toggleMode} button={btnText} />
+        <Alert alert={alert} />
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              <Form heading="Enter Your Text Here" showAlert={showAlert} />
+            }
+          ></Route>
+          <Route exact path="/about" element={<About />}></Route>
+          <Route exact path="/generator"element={<Generate apiKey = {apiKey} />}></Route>
+        </Routes>
+        <Footer />
+      </div>
     </Router>
   );
 }
