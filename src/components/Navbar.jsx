@@ -19,7 +19,10 @@ export default function Navbar(props) {
             <Link className="nav-link" to="/about">About</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/generator">Translate Text</Link>
+            <Link className="nav-link" to="/translate">Translate Text</Link>
+          </li>
+          <li className="nav-item">
+            <Link className="nav-link" to="/searchword">Search Word</Link>
           </li>
         </ul>
         <div name="form-check form-switch">

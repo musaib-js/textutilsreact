@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./components/About";
 import Footer from "./components/Footer";
 import Generate from "./components/Generate";
+import WordSearch from "./components/WordSearch";
 
 function App() {
   const apiKey = process.env.REACT_APP_GOOGLE_TRANSLATE_API
@@ -54,7 +55,8 @@ function App() {
             }
           ></Route>
           <Route exact path="/about" element={<About />}></Route>
-          <Route exact path="/generator"element={<Generate apiKey = {apiKey} />}></Route>
+          <Route exact path="/translate"element={<Generate apiKey = {apiKey} />}></Route>
+          <Route exact path="/searchword"element={<WordSearch apiKey = {apiKey} />}></Route>
         </Routes>
         <Footer />
       </div>
